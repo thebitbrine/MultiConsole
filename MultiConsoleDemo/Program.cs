@@ -1,5 +1,4 @@
-﻿using System;
-using Console = MultiConsole.Console; //Just to make things easier
+﻿using Console = MultiConsole.Console; //Just to make things easier
 
 namespace MultiConsoleDemo
 {

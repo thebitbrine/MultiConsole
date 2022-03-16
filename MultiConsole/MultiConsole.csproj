@@ -4,12 +4,37 @@
     <OutputType>Library</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageIcon>terminal-icon-256.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/thebitbrine/MultiConsole</RepositoryUrl>
+    <PackageTags>console, terminal, dotnet, output, multiconsole</PackageTags>
+    <PackageReleaseNotes>Fixed GC Collect Crash</PackageReleaseNotes>
+    <AssemblyVersion>1.1</AssemblyVersion>
+    <FileVersion>1.1</FileVersion>
+    <ApplicationIcon>MultiConsole.ico</ApplicationIcon>
+    <Version>1.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Win32Api\**" />
     <EmbeddedResource Remove="Win32Api\**" />
     <None Remove="Win32Api\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MultiConsole.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\..\Desktop\terminal-icon-256.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
