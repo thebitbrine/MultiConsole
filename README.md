@@ -2,7 +2,7 @@
 Now you can have as many as you want
 
 ```
-Install-Package MultiConsole -Version 1.0.0
+Install-Package MultiConsole -Version 1.1.0
 ```
 
 
@@ -72,7 +72,12 @@ namespace MultiConsoleDemo
         {
             Console.QuickEdit = true; //default is false, and also no. you can't flip it at runtime.
 
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < 666; i++)
+            {
+                Console.WriteLine($"Is {i+1} consoles enough yet?", i.ToString());
+            }
+
+            for (int i = 0; i < 131313; i++)
             {
                 //To get the console host going you'll have to run a function, anything will work
                 //Just keep that in mind so you don't scroll through all the windows like a maniac
