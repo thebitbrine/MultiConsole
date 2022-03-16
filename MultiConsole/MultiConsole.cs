@@ -22,7 +22,7 @@ namespace MultiConsole
                 return new Icon(ms);
             }
         }
-        
+
         #endregion
 
         private static Dictionary<string, int> ConsolePids = new Dictionary<string, int>();
@@ -128,7 +128,7 @@ namespace MultiConsole
                     break;
                 Thread.Sleep(25);
             }
-            
+
 
             stdHandle = NativeMethods.GetStdHandle(NativeMethods.STD_OUTPUT_HANDLE);
             safeFileHandle = new SafeFileHandle(stdHandle, true);
@@ -147,7 +147,7 @@ namespace MultiConsole
             GC.SuppressFinalize(standardOutput);
 
             System.Console.SetOut(standardOutput);
-           
+
         }
 
         private partial class NativeMethods
@@ -163,7 +163,7 @@ namespace MultiConsole
 
             public const int STD_OUTPUT_HANDLE = -11;
 
-            [DllImport("kernel32.dll", SetLastError= true)]
+            [DllImport("kernel32.dll", SetLastError = true)]
             public static extern bool SetConsoleIcon(IntPtr hIcon);
 
 
@@ -275,7 +275,7 @@ namespace MultiConsole
         public static void Beep(string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Beep(); }
         public static void Clear(string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Clear(); }
         public static void ResetColor(string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.ResetColor(); }
-        public static void WriteLine (string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.WriteLine(); }
+        public static void WriteLine(string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.WriteLine(); }
 
 
         public static ConsoleKeyInfo ReadKey(bool intercept, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); return System.Console.ReadKey(intercept); }
@@ -283,7 +283,7 @@ namespace MultiConsole
         public static Stream OpenStandardInput(int bufferSize, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); return System.Console.OpenStandardInput(bufferSize); }
         public static Stream OpenStandardOutput(int bufferSize, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); return System.Console.OpenStandardOutput(bufferSize); }
 
-        public unsafe static void MoveBufferArea(int sourceLeft, int sourceTop, int sourceWidth, int sourceHeight, int targetLeft, int targetTop, char sourceChar, ConsoleColor sourceForeColor, ConsoleColor sourceBackColor, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.MoveBufferArea(sourceLeft, sourceTop, sourceWidth, sourceHeight, targetLeft,  targetTop,  sourceChar,  sourceForeColor,  sourceBackColor); }
+        public unsafe static void MoveBufferArea(int sourceLeft, int sourceTop, int sourceWidth, int sourceHeight, int targetLeft, int targetTop, char sourceChar, ConsoleColor sourceForeColor, ConsoleColor sourceBackColor, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.MoveBufferArea(sourceLeft, sourceTop, sourceWidth, sourceHeight, targetLeft, targetTop, sourceChar, sourceForeColor, sourceBackColor); }
         public unsafe static void SetWindowSize(int width, int height, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.SetWindowSize(width, height); }
         public unsafe static void SetWindowPosition(int left, int top, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.SetWindowPosition(left, top); }
 
@@ -311,26 +311,26 @@ namespace MultiConsole
         public static void WriteLine(String value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.WriteLine(value); }
         public static void WriteLine(String format, Object arg0, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.WriteLine(format, arg0); }
         public static void WriteLine(String format, Object arg0, Object arg1, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.WriteLine(format, arg0, arg1); }
-        public static void WriteLine(String format, Object arg0, Object arg1, Object arg2, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.WriteLine(format,  arg0,  arg1,  arg2); }
+        public static void WriteLine(String format, Object arg0, Object arg1, Object arg2, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.WriteLine(format, arg0, arg1, arg2); }
 
-        public static void WriteLine(String format,  string ConsoleName = "Main", params Object[] arg) { FlipConsole(GetConsolePid(ConsoleName)); System.Console.WriteLine(format, arg); }
+        public static void WriteLine(String format, string ConsoleName = "Main", params Object[] arg) { FlipConsole(GetConsolePid(ConsoleName)); System.Console.WriteLine(format, arg); }
         public static void Write(String format, Object arg0, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(format, arg0); }
         public static void Write(String format, Object arg0, Object arg1, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(format, arg0, arg1); }
         public static void Write(String format, Object arg0, Object arg1, Object arg2, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(format, arg0, arg1, arg2); }
-       
-        public static void Write(String format, string ConsoleName = "Main", params Object[] arg) { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( format, arg); }
-        public static void Write(bool value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
-        public static void Write(char value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
-        public static void Write(char[] buffer, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( buffer); }
-        public static void Write(char[] buffer, int index, int count, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(buffer,  index,  count); }
-        public static void Write(double value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
-        public static void Write(decimal value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
-        public static void Write(float value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
-        public static void Write(int value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
-        public static void Write(uint value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
-        public static void Write(long value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
-        public static void Write(ulong value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
-        public static void Write(Object value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write( value); }
+
+        public static void Write(String format, string ConsoleName = "Main", params Object[] arg) { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(format, arg); }
+        public static void Write(bool value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
+        public static void Write(char value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
+        public static void Write(char[] buffer, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(buffer); }
+        public static void Write(char[] buffer, int index, int count, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(buffer, index, count); }
+        public static void Write(double value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
+        public static void Write(decimal value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
+        public static void Write(float value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
+        public static void Write(int value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
+        public static void Write(uint value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
+        public static void Write(long value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
+        public static void Write(ulong value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
+        public static void Write(Object value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
         public static void Write(String value, string ConsoleName = "Main") { FlipConsole(GetConsolePid(ConsoleName)); System.Console.Write(value); }
 
         public static void WriteLine(String format, Object arg0, Object arg1, Object arg2, Object arg3, string ConsoleName = "Main", __arglist)
