@@ -19,7 +19,7 @@ namespace MultiConsoleDemo
             {
                 //To get the console host going you'll have to run a function, anything will work
                 //Just keep that in mind so you don't scroll through all the windows like a maniac
-                //when in reality there is not console because your code hasn't been called yet
+                //when in reality there is no console because your code hasn't been called yet
 
                 Console.WriteLine("Hello to console 1", "You can name your consoles anything you want.");
                 Console.Beep(222, 500, "You can name your consoles anything you want.");
