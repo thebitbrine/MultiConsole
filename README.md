@@ -20,7 +20,8 @@ is because it has the shitty icon file (used for host consoles) as a string.
 
 ### The How
 ```
-It is complicated. Not really. It basically runs timeout.exe with /T -1 /NOBREAK so it waits for [Ctrl + C]
+It is complicated.
+Not really. It basically runs timeout.exe with /T -1 /NOBREAK so it waits for [Ctrl + C]
 waits for 666 ms so the timeout.exe host has time to boot up,
 hijacks its console, clears it up, sets the title, the icon, cancel key event and exit events,
 disables the quick edit mode (AKA misclick-to-pause-the-whole-damn-app),
