@@ -2,7 +2,7 @@
 Now you can have as many as you want
 
 ```
-Install-Package MultiConsole -Version 1.0.0
+Install-Package MultiConsole -Version 1.1.0
 ```
 
 
