@@ -1,0 +1,84 @@
+# MultiConsole
+Now you can have as many as you want
+
+
+
+### The Why
+------
+```
+For the longest time i wanted to be able to output to multiple consoles
+from one app so it is easier to focus on the output that i need from that
+debugging session without going around the code turning Console.WriteLines on and off.
+
+I have looked around for such a library for years now but it does not exist.
+probably because either everyone just codes the way they're "supposed" to without
+trying to pull of some wild shit or they're too busy working for some big corp.
+It is just more efficient to see what you need. You know what's not efficient?
+the code. It pulls off too many wild shit and the reason why it is half a meg
+is because it has the shitty icon file (used for host consoles) as a string.
+```
+
+### The How
+```
+It is complicated. Not really. It basically runs timeout.exe with /T -1 /NOBREAK so it waits for [Ctrl + C]
+waits for 666 ms so the timeout.exe host has time to boot up,
+hijacks its console, clears it up, sets the title, the icon, cancel key event and exit events,
+disables the quick edit mode (AKA misclick-to-pause-the-whole-damn-app),
+and keeps the host console's PID in a dictionary attached to its name.
+
+whenever you call anything* console related it flips the attached 
+console to the specified one using the PID from aforementioned
+dictionary and calls the underlying function.
+```
+
+### The Why Not
+```
+Do not use this in prod. It WILL fuck up. also it is not thread safe because
+it can't switch consoles as fast and also it calls kernel32.dll functions, you know how that usually goes.
+Also you can't use ConsoleCancelEventHandler because i used them all to kill
+all the other consoles when shit hits the fan (or the app exits)
+Memory managment? Who's that?
+```
+
+### Limitations
+```
+Many.
++ No multi-threading (if you're not like me)
++ No direct ConsoleCancelEventHandler event access
++ Slow console host boot-up time (666 ms each)
++ Unsafe code
++ .NetCore 3.1
+just to name a few.
+```
+
+
+### Usage example
+```cs
+using Console = MultiConsole.Console;
+
+namespace MultiConsoleDemo
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.QuickEdit = true; //default is false, and also no. you can't flip it at runtime.
+
+            for (int i = 0; i < 10000; i++)
+            {
+                Console.WriteLine("Hello to console 1", "Console #1");
+                Console.Beep(222, 500, "Console #1");
+
+                Console.WriteLine("Hello to console 2", "Console #2");
+                Console.Beep(333, 500, "Console #2");
+
+                Console.WriteLine("Hello to console 3", "Console #3");
+                Console.Beep(444, 500, "Console #3");
+            }
+
+        }
+    }
+}
+
+```
+
