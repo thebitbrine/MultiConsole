@@ -1,4 +1,4 @@
-﻿using Microsoft.Win32.SafeHandles;
+using Microsoft.Win32.SafeHandles;
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -44,12 +44,12 @@ namespace MultiConsole
 
             Process p = Process.Start(psi);
 
-            InitConsole(p.Id, ConsolePids.Count);
+            InitConsole(p.Id, Name, ConsolePids.Count);
             ConsolePids.Add(Name, p.Id);
             return p.Id;
         }
 
-        private static void InitConsole(int pId, int ConsoleIndex = 0)
+        private static void InitConsole(int pId, string Name, int ConsoleIndex = 0)
         {
             Thread.Sleep(666);
             string CurrName = Path.GetFileNameWithoutExtension(Assembly.GetEntryAssembly().Location);
@@ -71,7 +71,7 @@ namespace MultiConsole
             if (!QuickEdit)
                 DisableQuickEditMode();
 
-            System.Console.Title = $"{CurrName} - Output: #{ConsoleIndex + 1} ({pId})";
+            System.Console.Title = $"[{ConsoleIndex + 1}] {CurrName} - {Name} ({pId})";
             System.Console.Clear();
             FlipConsole(CurrPid);
         }
