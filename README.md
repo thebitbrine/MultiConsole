@@ -1,6 +1,9 @@
 # MultiConsole
 Now you can have as many as you want
 
+```
+Install-Package MultiConsole -Version 1.0.0
+```
 
 
 ### The Why
