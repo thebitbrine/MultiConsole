@@ -72,12 +72,10 @@ namespace MultiConsoleDemo
         {
             Console.QuickEdit = true; //default is false, and also no. you can't flip it at runtime.
 
-
             for (int i = 0; i < 666; i++)
             {
                 Console.WriteLine($"Is {i+1} consoles enough yet?", i.ToString());
             }
-
 
             for (int i = 0; i < 131313; i++)
             {
@@ -93,7 +91,6 @@ namespace MultiConsoleDemo
 
                 Console.WriteLine("Hello to console 3", "Console #3");
                 Console.Beep(444, 500, "Console #3");
-
             }
         }
     }
