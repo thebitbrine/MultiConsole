@@ -22,9 +22,13 @@ is because it has the shitty icon file (used for host consoles) as a string.
 ```
 It is complicated.
 Not really. It basically runs timeout.exe with /T -1 /NOBREAK so it waits for [Ctrl + C]
-waits for 666 ms so the timeout.exe host has time to boot up,
-hijacks its console, clears it up, sets the title, the icon, cancel key event and exit events,
-disables the quick edit mode (AKA misclick-to-pause-the-whole-damn-app),
+waits for 666 ms so the timeout.exe host has time to boot up.
+(Why not just AllocConsole() you ask? because whenever the lib calls FreeConsole() to flip
+to another console the first console closes cuz there's nothing attached to it.
+So to bypass that "feature" we need to hijacks something else's console so it
+stays open when the lib is busy outputing to another console.)
+So yeah, it hijacks its console, clears it up, sets the title, the icon,
+cancel key event and exit events, disables the quick edit mode (AKA misclick-to-pause-the-whole-damn-app),
 and keeps the host console's PID in a dictionary attached to its name.
 
 whenever you call anything* console related it flips the attached 
