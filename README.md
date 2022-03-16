@@ -6,13 +6,13 @@ Now you can have as many as you want
 ### The Why
 ------
 ```
-For the longest time i wanted to be able to output to multiple consoles
-from one app so it is easier to focus on the output that i need from that
+For the longest time, I wanted to be able to output to multiple consoles
+from one app so it is easier to focus on the output that I need from that
 debugging session without going around the code turning Console.WriteLines on and off.
 
 I have looked around for such a library for years now but it does not exist.
 probably because either everyone just codes the way they're "supposed" to without
-trying to pull of some wild shit or they're too busy working for some big corp.
+trying to pull off some wild shit or they're too busy working for some big corp.
 It is just more efficient to see what you need. You know what's not efficient?
 the code. It pulls off too many wild shit and the reason why it is half a meg
 is because it has the shitty icon file (used for host consoles) as a string.
@@ -26,7 +26,7 @@ waits for 666 ms so the timeout.exe host has time to boot up.
 (Why not just AllocConsole() you ask? because whenever the lib calls FreeConsole() to flip
 to another console the first console closes cuz there's nothing attached to it.
 So to bypass that "feature" we need to hijacks something else's console so it
-stays open when the lib is busy outputing to another console.)
+stays open when the lib is busy outputting to another console.)
 So yeah, it hijacks its console, clears it up, sets the title, the icon,
 cancel key event and exit events, disables the quick edit mode (AKA misclick-to-pause-the-whole-damn-app),
 and keeps the host console's PID in a dictionary attached to its name.
@@ -38,11 +38,11 @@ dictionary and calls the underlying function.
 
 ### The Why Not
 ```
-Do not use this in prod. It WILL fuck up. also it is not thread safe because
+Do not use this in prod. It WILL fuck up. also, it is not thread-safe because
 it can't switch consoles as fast and also it calls kernel32.dll functions, you know how that usually goes.
-Also you can't use ConsoleCancelEventHandler because i used them all to kill
+Also, you can't use ConsoleCancelEventHandler because I used them all to kill
 all the other consoles when shit hits the fan (or the app exits)
-Memory managment? Who's that?
+Memory management? Who's that?
 ```
 
 ### Limitations
